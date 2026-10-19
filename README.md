@@ -4,6 +4,8 @@ Blog pessoal desenvolvido com Django e Tailwind CSS como solução do desafio [P
 
 A aplicação permite listar artigos, visualizar o conteúdo completo de cada post e gerenciar as publicações pelo painel administrativo do Django.
 
+Link do desafio: https://roadmap.sh/projects/personal-blog
+
 ## Funcionalidades
 
 - Página inicial com a lista de artigos publicados, data e prévia do conteúdo.
