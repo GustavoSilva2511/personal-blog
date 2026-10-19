@@ -1,7 +1,34 @@
-{% if post %}
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.content }}</p>
-    <p>Created at: {{ post.created_at }}</p>
-{% else %}
-    <p>Blog post not found.</p>
-{% endif %}
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <article class="mx-auto max-w-2xl">
+        {% if post %}
+            <a href="{% url 'home' %}" class="inline-flex items-center gap-1 text-sm font-medium text-slate-500 transition-colors hover:text-indigo-600">
+                &larr; Voltar para os artigos
+            </a>
+
+            <header class="mt-8 border-b border-slate-200 pb-8">
+                <h1 class="font-serif text-3xl font-semibold leading-tight tracking-tight text-slate-900 md:text-4xl">
+                    {{ post.title }}
+                </h1>
+                <p class="mt-4 text-sm text-slate-400">
+                    Publicado em <time>{{ post.created_at|date:"d M Y" }}</time>
+                </p>
+            </header>
+
+            <div class="mt-8 text-lg leading-relaxed whitespace-pre-line text-slate-700">
+                {{ post.content }}
+            </div>
+        {% else %}
+            <div class="rounded-2xl border border-dashed border-slate-300 bg-white/60 px-6 py-20 text-center">
+                <p class="font-serif text-2xl font-semibold text-slate-700">Artigo não encontrado</p>
+                <p class="mt-2 text-slate-500">O artigo que você procura não existe ou foi removido.</p>
+                <a href="{% url 'home' %}" class="mt-6 inline-block rounded-full bg-indigo-600 px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-700">
+                    Voltar para os artigos
+                </a>
+            </div>
+        {% endif %}
+    </article>
+{% endblock %}
